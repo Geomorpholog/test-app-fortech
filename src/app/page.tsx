@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Fragment } from "react";
-import Header from "./header"
+import Header from "./UI/header"
 
 export default function Home() {
   return (

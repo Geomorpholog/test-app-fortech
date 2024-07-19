@@ -22,8 +22,8 @@ export default function NavLinks() {
           <Link          
             key={link.name}
             href={link.href}
-            className={clsx(" flex h-[68px] text-lg text-sky-950 grow items-center justify-center gap-2  bg-sky-200 p-3 text-sm font-medium hover:bg-amber-700 hover:text-amber-100 md:flex-none md:justify-start md:p-2 md:px-3",{
-              'bg-slate-900 text-amber-200': pathname === link.href,
+            className={clsx(" mb-[8px] flex h-[68px] text-lg text-sky-950 grow items-center justify-center gap-2  bg-sky-200 p-3 text-sm font-medium hover:bg-gray-700 hover:text-amber-100 md:flex-none md:justify-start md:p-2 md:px-3 last:mb-0",{
+              'bg-slate-900 text-orange-500': pathname === link.href,
             },)}
           >
             <Image src = {link.icon} alt = "icon"
