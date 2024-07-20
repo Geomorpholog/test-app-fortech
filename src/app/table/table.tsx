@@ -1,12 +1,13 @@
 'use client'
 import { useState } from 'react'
 import { createColumnHelper, useReactTable, getCoreRowModel, flexRender, getPaginationRowModel,getSortedRowModel,SortingFn, } from '@tanstack/react-table'
+import Users from '../users/page';
 
-type TableProps = { dataSet: object }
+
+type TableProps = { dataSet: Users}
+type Users = { users: object};
 export default function Table({ dataSet }: TableProps) {
-
-  type Users = { users: Array<object> };
-  const usersObj: Users = dataSet;
+  
   type User = {
     id: number
     firstName: string
@@ -14,10 +15,10 @@ export default function Table({ dataSet }: TableProps) {
     age: number
     gender: string
     eyeColor: string
-  }
-  const data: User[] = usersObj.users
-  console.log(data)
-
+  } 
+  
+  const data: User[] = dataSet.users
+ 
   const columnHelper = createColumnHelper<User>();
 
   const columns = [
