@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="bg-sky-200 w-1/5 h-screen inline flex flex-col">
+        <div className="bg-sky-200 w-[500px] h-screen inline flex flex-col fixed">
           
           <Header />
           <p className="text-center text-sky-950 "> Place for some content: </p>
