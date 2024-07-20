@@ -1,8 +1,6 @@
 'use client'
 import { useState } from 'react'
 import { createColumnHelper, useReactTable, getCoreRowModel, flexRender, getPaginationRowModel,getSortedRowModel,SortingFn, } from '@tanstack/react-table'
-import button from './button'
-
 
 type TableProps = { dataSet: object }
 export default function Table({ dataSet }: TableProps) {
