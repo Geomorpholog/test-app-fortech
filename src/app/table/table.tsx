@@ -1,60 +1,24 @@
 'use client'
-import { useState } from 'react'
-import { createColumnHelper, useReactTable, getCoreRowModel, flexRender, getPaginationRowModel,getSortedRowModel,SortingFn, } from '@tanstack/react-table'
-import Users from '../users/page';
+import { useState, useEffect } from 'react'
+import { useReactTable, getCoreRowModel, flexRender, getPaginationRowModel,getSortedRowModel,SortingFn, } from '@tanstack/react-table'
+import { fetchUsers,columns,User } from './data/getUsersData'
 
+ export default  function Table() {
+  const [data, setData] = useState<User[]>([]); 
 
-type TableProps = { dataSet: Users}
-type Users = { users: object};
-export default function Table({ dataSet }: TableProps) {
-  
-  type User = {
-    id: number
-    firstName: string
-    lastName: string
-    age: number
-    gender: string
-    eyeColor: string
-  } 
-  
-  const data: User[] = dataSet.users
- 
-  const columnHelper = createColumnHelper<User>();
+  useEffect(() => {
+    const fetchData = async () => {
+        const users = await fetchUsers(); 
+        setData(users); 
+    };
 
-  const columns = [
-    columnHelper.accessor('id', {
-      header: "ID",
-      cell: info => info.getValue(),
-    }),
-    columnHelper.accessor('firstName', {
-      header: "First Name",
-      cell: info => info.getValue(),
-    }),
-    columnHelper.accessor('lastName', {
-      header: 'Last Name',
-      cell: info => info.getValue(),
-    }),
-    columnHelper.accessor('age', {
-      header: 'Age',
-      cell: info => info.getValue(),
-      sortingFn:'alphanumeric',
-      enableSorting:true
-    }),
-    columnHelper.accessor('gender', {
-      header: 'Gender',
-      cell: info => info.getValue(),
-    }),
-    columnHelper.accessor('eyeColor', {
-      header: 'Eye Color',
-      cell: info => info.getValue(),
-    }),
-  ]
-
+    fetchData();
+  }, []); 
+     
   const [pagination, setPagination] = useState({
-    pageIndex: 0, //initial page index
-    pageSize: 5, //default page size
+    pageIndex: 0, 
+    pageSize: 5, 
   });
-
   const table = useReactTable({
     columns,
     data,
