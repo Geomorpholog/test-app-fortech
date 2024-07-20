@@ -5,11 +5,13 @@ import { fetchUsers,columns,User } from './data/getUsersData'
 
  export default  function Table() {
   const [data, setData] = useState<User[]>([]); 
-
+  const [loading,setLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
+      try {setLoading(true)
         const users = await fetchUsers(); 
-        setData(users); 
+        setData(users); }
+        finally {setLoading(false)}
     };
 
     fetchData();
@@ -30,6 +32,13 @@ import { fetchUsers,columns,User } from './data/getUsersData'
       pagination,
     },
   })
+  if (loading) {
+    return (
+      <div className="w-4/4 h-screen flex justify-center items-center">
+        <p className="text-5xl animate-bounce">Загрузка данных...</p>
+      </div>
+    )
+}
 
   return (
     <>
