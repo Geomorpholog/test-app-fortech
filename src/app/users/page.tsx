@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import Table from "../table/table";
+import Table from "./usersTable";
 
 
 
