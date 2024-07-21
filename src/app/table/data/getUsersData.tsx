@@ -24,7 +24,7 @@ export type User = {
           return data.users; 
             
         } else {
-            console.error("Failed to fetch data, arraay is empty");
+            console.error("Failed to fetch data, array is empty");
             return [];
         }
     } catch (error) {
