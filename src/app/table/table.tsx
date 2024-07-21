@@ -1,21 +1,10 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { useReactTable, getCoreRowModel, flexRender, getPaginationRowModel,getSortedRowModel,SortingFn, } from '@tanstack/react-table'
-import { fetchUsers,columns,User } from './data/getUsersData'
+import { UsersPropsType } from '../users/users';
 
- export default  function Table() {
-  const [data, setData] = useState<User[]>([]); 
-  const [loading,setLoading] = useState(true);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {setLoading(true)
-        const users = await fetchUsers(); 
-        setData(users); }
-        finally {setLoading(false)}
-    };
 
-    fetchData();
-  }, []); 
+const Table: React.FC<UsersPropsType> = ({ columns, data }) => {
      
   const [pagination, setPagination] = useState({
     pageIndex: 0, 
@@ -32,13 +21,7 @@ import { fetchUsers,columns,User } from './data/getUsersData'
       pagination,
     },
   })
-  if (loading) {
-    return (
-      <div className="w-4/4 h-screen flex justify-center items-center">
-        <p className="text-5xl animate-bounce">Loading Data...</p>
-      </div>
-    )
-}
+  
 
   return (
     <>
@@ -143,3 +126,4 @@ import { fetchUsers,columns,User } from './data/getUsersData'
   )
 }
 
+export default Table
