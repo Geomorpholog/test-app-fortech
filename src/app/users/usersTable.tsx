@@ -76,19 +76,45 @@ export default function Table() {
           {'>'}
         </button>
       </div>
-      <select
-        className="text-2xl fixed"
-        value={table.getState().pagination.pageSize}
-        onChange={e => {
-          table.setPageSize(Number(e.target.value))
-        }}
-      >
-        {[5, 10, 20, 30].map(pageSize => (
-          <option key={pageSize} value={pageSize}>
-            {pageSize}
-          </option>
-        ))}
-      </select>
+      <div className="w-[50px] h-[200px] fixed flex flex-col left-[520px]">
+
+        <div>Page</div>
+        <strong>
+          {table.getState().pagination.pageIndex + 1} of{' '}
+          {table.getPageCount().toLocaleString()}
+        </strong>
+
+        <p className="flex items-center gap-1">
+          Go to page:</p>
+        <input
+          type="number"
+          min="1" 
+          max={table.getPageCount().toLocaleString()}
+          defaultValue={table.getState().pagination.pageIndex + 1}
+          onChange={e => {
+            const page = e.target.value ? Number(e.target.value) - 1 : 0;
+            table.setPageIndex(page)
+          }}
+          
+          className="w-12 text-2xl"
+        />
+        <p className="flex items-center gap-1">
+          Show rows:</p>
+        <select
+          className="text-2xl"
+          value={table.getState().pagination.pageSize}
+          onChange={e => {
+            table.setPageSize(Number(e.target.value))
+          }}
+        >
+          {[5, 10, 20, 30].map(pageSize => (
+            <option key={pageSize} value={pageSize}>
+              {pageSize}
+            </option>
+          ))}
+        </select>
+
+      </div>
       <div className="w-full h-full flex justify-center items-center flex-col" >
         <table className="text-3xl text-sky-950 border-collapse: collapse;">
           <thead>
