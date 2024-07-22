@@ -4,7 +4,7 @@ import { useReactTable, getCoreRowModel, flexRender, getPaginationRowModel,getSo
 
 
 type PropsType = {
-  columns: any
+  columns: ColumnDef<any,any>[]
   data: object[]
 }
 
