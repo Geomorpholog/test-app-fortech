@@ -76,11 +76,14 @@ const Table: React.FC<PropsType> = ({ columns, data }) => {
           Go to page:</p>
         <input
           type="number"
+          min="1"
+          max={table.getPageCount().toLocaleString()}
           defaultValue={table.getState().pagination.pageIndex + 1}
           onChange={e => {
-            const page = e.target.value ? Number(e.target.value) - 1 : 0
+            const page = e.target.value ? Number(e.target.value) - 1 : 0;
             table.setPageIndex(page)
           }}
+
           className="w-12 text-2xl"
         />
         <p className="flex items-center gap-1">
