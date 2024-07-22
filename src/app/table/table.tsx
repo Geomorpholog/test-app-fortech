@@ -22,6 +22,7 @@ const Table: React.FC<UsersPropsType> = ({ columns, data }) => {
     },
   })
   
+  
 
   return (
     <>

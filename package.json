@@ -1,5 +1,6 @@
 {
   "name": "test-app-fortech",
+  "homepage":"https://geomorpholog.github.io/test-app-fortech",
   "version": "0.1.0",
   "private": true,
   "scripts": {

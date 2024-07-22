@@ -1,8 +1,8 @@
-import { json } from "stream/consumers";
+
 import { User} from "../users/users";
 
 export type Data<T> = {
-  data:T
+  users:T
 };
 
 export const getData = async (): Promise<Data<User[]> | undefined> => {

@@ -1,10 +1,7 @@
 "use client"
 import { useState, useEffect } from "react";
 import { createColumnHelper, ColumnDef} from "@tanstack/react-table";
-import { getData, Data } from "../data/getData";
 import Table from "../table/table";
-
-
 
 export type User = {
     id: number;
@@ -18,14 +15,24 @@ export type UsersPropsType = {
     columns: ColumnDef<User,never|any>[];
     data: User[]
 }
-    
 
+type Data = {
+    users:User[]
+  };
+
+const getData = async (): Promise<Data | undefined> => {
+    const res = await fetch('https://dummyjson.com/users')
+    if (!res.ok) {
+      throw new Error('Failed to fetch data')
+    }
+    return res.json()
+  }
 const fetchUsers = async (): Promise<User[]> => {
     try {
-        const data: Data<User[]> | undefined = await getData();
+        const data: Data | undefined = await getData();
         if (data) {
-            console.log(data.data)
-            return data.data;
+            
+            return data.users;
 
         } else {
             console.error("Failed to fetch data, array is empty");
