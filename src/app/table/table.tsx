@@ -64,14 +64,14 @@ const Table: React.FC<PropsType> = ({ columns, data }) => {
           {'>'}
         </button>
       </div>
-      <div className = "w-[50px] h-[200px] fixed flex flex-col left-[520px]">
-        
-          <div>Page</div>
-          <strong>
-            {table.getState().pagination.pageIndex + 1} of{' '}
-            {table.getPageCount().toLocaleString()}
-          </strong>
-        
+      <div className="w-[50px] h-[200px] fixed flex flex-col left-[520px]">
+
+        <div>Page</div>
+        <strong>
+          {table.getState().pagination.pageIndex + 1} of{' '}
+          {table.getPageCount().toLocaleString()}
+        </strong>
+
         <p className="flex items-center gap-1">
           Go to page:</p>
         <input
@@ -84,7 +84,7 @@ const Table: React.FC<PropsType> = ({ columns, data }) => {
           className="w-12 text-2xl"
         />
         <p className="flex items-center gap-1">
-        Show pages:</p>
+          Show rows:</p>
         <select
           className="text-2xl"
           value={table.getState().pagination.pageSize}
