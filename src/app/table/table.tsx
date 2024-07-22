@@ -1,10 +1,14 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { useReactTable, getCoreRowModel, flexRender, getPaginationRowModel,getSortedRowModel,SortingFn, } from '@tanstack/react-table'
-import { UsersPropsType } from '../users/users';
+import { useReactTable, getCoreRowModel, flexRender, getPaginationRowModel,getSortedRowModel,SortingFn, ColumnDef } from '@tanstack/react-table'
 
 
-const Table: React.FC<UsersPropsType> = ({ columns, data }) => {
+type PropsType = {
+  columns: any
+  data: object[]
+}
+
+const Table: React.FC<PropsType> = ({ columns, data }) => {
      
   const [pagination, setPagination] = useState({
     pageIndex: 0, 
