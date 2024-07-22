@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect } from "react";
-import { createColumnHelper, ColumnDef} from "@tanstack/react-table";
+import { createColumnHelper, ColumnDef } from "@tanstack/react-table";
 import Table from "../table/table";
 
 export type User = {
@@ -12,26 +12,26 @@ export type User = {
     eyeColor: string;
 };
 export type UsersPropsType = {
-    columns: ColumnDef<User,never|any>[];
+    columns: ColumnDef<User, never | any>[];
     data: User[]
 }
 
 type Data = {
-    users:User[]
-  };
+    users: User[]
+};
 
 const getData = async (): Promise<Data | undefined> => {
     const res = await fetch('https://dummyjson.com/users')
     if (!res.ok) {
-      throw new Error('Failed to fetch data')
+        throw new Error('Failed to fetch data')
     }
     return res.json()
-  }
+}
 const fetchUsers = async (): Promise<User[]> => {
     try {
         const data: Data | undefined = await getData();
         if (data) {
-            
+
             return data.users;
 
         } else {
@@ -49,7 +49,7 @@ const data = fetchUsers()
 const columnHelper = createColumnHelper<User>();
 
 
-const columns: ColumnDef<User,never|any>[]  = [
+const columns: ColumnDef<User, never | any>[] = [
     columnHelper.accessor('id', {
         header: 'ID',
         cell: info => info.getValue(),
@@ -100,9 +100,9 @@ export default function Users() {
 
     if (loading) {
         return (
-          <div className="w-4/4 h-screen flex justify-center items-center">
-            <p className="text-5xl animate-bounce">Loading Data...</p>
-          </div>
+            <div className="w-4/4 h-screen flex justify-center items-center">
+                <p className="text-5xl animate-bounce">Loading Data...</p>
+            </div>
         )
     }
 

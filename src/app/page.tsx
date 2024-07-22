@@ -14,7 +14,7 @@ export default function Home() {
           height: 'auto',
           margin: '25px auto'
         }} />
-        <p className = "animate-bounce">This kitten waitin some food like this page waiting some content</p>
+      <p className="animate-bounce">This kitten waitin some food like this page waiting some content</p>
 
     </div>
 
